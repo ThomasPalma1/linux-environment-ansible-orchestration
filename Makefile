@@ -16,10 +16,11 @@ install:
             sudo apt install ansible -y
         else
             sudo dnf update -y
-			sudo dnf install epel-release -y
+            sudo dnf install epel-release -y
             sudo dnf install ansible -y
         endif
     else
         @echo "Unsupported operating system: $(operational_system)"
         @exit 1
     endif
+	
