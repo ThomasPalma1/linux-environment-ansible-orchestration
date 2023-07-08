@@ -11,19 +11,17 @@ ifeq ($(operational_system), Linux)
 endif
 
 install:
-	ifdef package_manager
-		ifeq ($(package_manager), apt)
-			sudo apt update -y
-			sudo apt install ansible -y
-		else
-			sudo dnf update -y
-			sudo dnf install epel-release -y
-			sudo dnf install ansible -y
-		endif
-	else
-		@echo "Unsupported operating system: $(operational_system)"
-		@exit 1
-	endif
+ifeq ($(package_manager), apt)
+	sudo apt update -y
+	sudo apt install ansible -y
+else ifeq ($(package_manager), dnf)
+	sudo dnf update -y
+	sudo dnf install epel-release -y
+	sudo dnf install ansible -y
+else
+	@echo "Unsupported operating system: $(operational_system)"
+	@exit 1
+endif
+	@sleep 3
 	@echo "Running playbook..."
 	@ansible-playbook $(playbook)
-	

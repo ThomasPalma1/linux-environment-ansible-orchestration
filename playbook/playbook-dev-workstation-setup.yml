@@ -1,10 +1,9 @@
 ---
-- name
+- name: Example Playbook
   hosts: 127.0.0.1
   connection: local
 
-
   tasks:
-  - name: print debug message
-    debug:
-      msg: "Hello, World!"
+    - name: Print debug message
+      debug:
+        msg: "Hello, World!"
