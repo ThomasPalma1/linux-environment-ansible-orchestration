@@ -24,6 +24,6 @@ install:
         @echo "Unsupported operating system: $(operational_system)"
         @exit 1
     endif
-	@echo "Running playbook..."
-	@ansible-playbook $(playbook)
+    @echo "Running playbook..."
+    @ansible-playbook $(playbook)
 	
