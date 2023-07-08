@@ -1,5 +1,6 @@
 operational_system := $(shell uname)
 package_manager :=
+playbook := playbook/playbook-dev-workstation-setup.yml
 
 ifeq ($(operational_system), Linux)
     ifeq ($(shell command -v dnf 2> /dev/null), )
@@ -23,4 +24,6 @@ install:
         @echo "Unsupported operating system: $(operational_system)"
         @exit 1
     endif
+	@echo "Running playbook..."
+	@ansible-playbook $(playbook)
 	
