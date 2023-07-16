@@ -1,0 +1,46 @@
+name: GitHub Actions Example
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v2
+
+    - name: install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make
+
+    - name: clone repository
+      run: git clone https://github.com/ThomasPalma1/linux-environment-ansible-orchestration.git
+
+    - name: run make install
+      run: |
+        cd linux-environment-ansible-orchestration
+        make install
+
+    - name: run on Fedora
+      runs-on: fedora-latest
+      steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: |
+          sudo dnf update
+          sudo dnf install -y make
+
+      - name: clone repository
+        run: git clone https://github.com/ThomasPalma1/linux-environment-ansible-orchestration.git
+
+      - name: run make install
+        run: |
+          cd linux-environment-ansible-orchestration
+          make install
