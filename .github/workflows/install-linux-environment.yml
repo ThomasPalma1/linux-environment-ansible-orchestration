@@ -1,5 +1,4 @@
 name: testing the working of the project
-
 on:
   push:
     branches:
@@ -26,7 +25,7 @@ jobs:
           cd linux-environment-ansible-orchestration
           make install
 
-  run on Fedora:
+  fedora-install:
     runs-on: fedora-latest
 
     steps:
