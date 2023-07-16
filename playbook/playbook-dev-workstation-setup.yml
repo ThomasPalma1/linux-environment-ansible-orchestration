@@ -1,9 +1,30 @@
 ---
-- name: Example Playbook
+- name: install all necessary packages
+  gather_facts: true
+  become: true
   hosts: 127.0.0.1
   connection: local
 
+  vars:
+    ansible_package_manager:
+      Fedora: dnf
+      Ubuntu: apt
+
   tasks:
-    - name: Print debug message
-      debug:
-        msg: "Hello, World!"
+    - name: Install Python packages for Debian
+      apt:
+        name:
+          - python
+          - python-pip
+          - python-dev
+        state: present
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Install Python packages for Fedora
+      yum:
+        name:
+          - python
+          - python-pip
+          - python-devel
+        state: present
+      when: ansible_distribution == 'Fedora'
