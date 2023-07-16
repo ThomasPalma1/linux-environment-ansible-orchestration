@@ -11,11 +11,11 @@
       Ubuntu: apt
 
   tasks:
-    - name: Debug ansible_distribution
+    - name: debug ansible_distribution
       debug:
         var: ansible_distribution
 
-    - name: Install Python packages for Debian
+    - name: install python packages for debian
       apt:
         name:
           - python3
@@ -28,7 +28,7 @@
         state: present
       when: ansible_distribution == 'Ubuntu'
 
-    - name: Install Python packages for Fedora
+    - name: istall python packages for fedora
       dnf:
         name:
           - python3
