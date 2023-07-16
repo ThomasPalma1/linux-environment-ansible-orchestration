@@ -1,4 +1,4 @@
-name: GitHub Actions Example
+name: testing the working of the project
 
 on:
   push:
@@ -26,21 +26,22 @@ jobs:
           cd linux-environment-ansible-orchestration
           make install
 
-      - name: run on Fedora
-        runs-on: fedora-latest
-        steps:
-          - name: checkout repository
-            uses: actions/checkout@v2
+  run on Fedora:
+    runs-on: fedora-latest
 
-          - name: install dependencies
-            run: |
-              sudo dnf update
-              sudo dnf install -y make
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
 
-          - name: clone repository
-            run: git clone https://github.com/ThomasPalma1/linux-environment-ansible-orchestration.git
+      - name: install dependencies
+        run: |
+          sudo dnf update
+          sudo dnf install -y make
 
-          - name: run make install
-            run: |
-              cd linux-environment-ansible-orchestration
-              make install
+      - name: clone repository
+        run: git clone https://github.com/ThomasPalma1/linux-environment-ansible-orchestration.git
+
+      - name: run make install
+        run: |
+          cd linux-environment-ansible-orchestration
+          make install
