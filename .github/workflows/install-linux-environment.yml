@@ -7,14 +7,13 @@ on:
 jobs:
   ubuntu-install:
     runs-on: ubuntu-latest
-
     steps:
       - name: set up node 16
         uses: actions/setup-node@v2
         with:
           node-version: "16"
 
-      - name: Checkout repository
+      - name: checkout repository
         uses: actions/checkout@v2
 
       - name: install dependencies
@@ -30,14 +29,13 @@ jobs:
           cd linux-environment-ansible-orchestration
           make install
 
-    fedora-install:
-      runs-on: ubuntu-latest
-
-      steps:
-        - name: Checkout repository
+  fedora-install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
         uses: actions/checkout@v2
 
-        - name: run dockerfile
-          run: |
-            docker build -t fedora-install .
-            docker run my-image
+      - name: run dockerfile
+        run: |
+          docker build -t fedora-install .
+          docker run my-image
