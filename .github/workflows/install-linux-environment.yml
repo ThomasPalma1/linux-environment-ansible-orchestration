@@ -31,13 +31,13 @@ jobs:
           make install
 
     fedora-install:
-    runs-on: ubuntu-latest
+      runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
+      steps:
+        - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: run dockerfile
-        run: |
-          docker build -t fedora-install .
-          docker run my-image
+        - name: run dockerfile
+          run: |
+            docker build -t fedora-install .
+            docker run my-image
