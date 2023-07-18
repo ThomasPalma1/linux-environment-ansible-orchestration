@@ -38,4 +38,4 @@ jobs:
       - name: run dockerfile
         run: |
           docker build -t fedora-install .
-          docker run my-image
+          docker run fedora-install
