@@ -37,6 +37,6 @@
           - python3-setuptools
           - python3-wheel
           - python3-devel
-          - python3-pipenv
+          - pipenv
         state: present
       when: ansible_distribution == 'Fedora'
