@@ -21,7 +21,7 @@ else ifeq ($(package_manager), dnf)
 	sudo dnf update -y
 
 	sudo dnf groupinstall -y "Development Tools"
-	sudo dnf install zlib-devel libffi-devel openssl-devel -y
+	sudo dnf install zlib-devel libffi-devel openssl-devel wget -y
 
 	sudo wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tar.xz && \
   	sudo tar -xf Python-3.11.0.tar.xz && \
